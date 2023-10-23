@@ -37,7 +37,7 @@ var app = (function () {
         stompClient.connect({}, function (frame) {
             console.log('Connected: ' + frame);
             stompClient.subscribe('/topic/newpoint', function (eventbody) {
-                // Lógica para manejar eventos recibidos desde el servidor
+                // para manejar eventos recibidos desde el servidor
                 var newPoint = JSON.parse(eventbody.body);
                 var x = newPoint.x;
                 var y = newPoint.y;
