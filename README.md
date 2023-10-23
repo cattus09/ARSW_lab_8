@@ -77,11 +77,10 @@ Para hacer mas útil la aplicación, en lugar de capturar las coordenadas con ca
 ![image](https://github.com/cattus09/ARSW_lab_8/assets/98556822/9c175142-1b16-4647-9f2d-e7cf8175b027)
 
 
-4. Ejecute su aplicación en varios navegadores (y si puede en varios computadores, accediendo a la aplicación mendiante la IP donde corre el servidor). Compruebe que a medida![image](https://github.com/cattus09/ARSW_lab_8/assets/98556822/544931f2-6706-42a5-9ded-8878e8e96dd3)
- que se dibuja un punto, el mismo es replicado en todas las instancias abiertas de la aplicación.
-
+4. Ejecute su aplicación en varios navegadores (y si puede en varios computadores, accediendo a la aplicación mendiante la IP donde corre el servidor). Compruebe que a medida que se dibuja un punto, el mismo es replicado en todas las instancias abiertas de la aplicación.
+![image](https://github.com/cattus09/ARSW_lab_8/assets/98556822/544931f2-6706-42a5-9ded-8878e8e96dd3)
 ![image](https://github.com/cattus09/ARSW_lab_8/assets/98556822/74201cc8-f5f0-444a-bd9e-93e6d4f34544)
-![Uploading image.png…]()
+
 
 
 
