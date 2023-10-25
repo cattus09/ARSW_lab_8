@@ -8,6 +8,12 @@ var app = (function () {
             this.y=y;
         }        
     }
+
+    class Polygon{
+        constructor(points){
+            this.points = points;
+        }
+    }
     
     var stompClient = null;
     var canvas
@@ -46,14 +52,32 @@ var app = (function () {
                 var y = newPoint.y;
                 //alert('Nuevo punto recibido - X: ' + x + ', Y: ' + y);
                 var newPoint = new Point(x, y);
-                addPointToCanvas(newPoint);
+                if(topic.includes("newpoint")){
+                    addPointToCanvas(pt);
+                } else {
+                    var polygon = new Polygon(pt);
+                    drawNewPolygon(polygon);
+                }
+
                 
             });
         });
 
     };
     
-    
+    var drawNewPolygon = function(polygon){
+        var ctx = canvas.getContext('2d');
+        var canvas = document.getElementById('canvas');
+        ctx.beginPath();;
+        ctx.fillStyle = '#8A2BE2';
+        console.log("Longitud" +  polygon.points.length);
+        for(var i = 1; i <=  4; i++){
+            if (i == 1 )ctx.moveTo(polygon.points[polygon.points.length - i].x, polygon.points[polygon.points.length - i].y);
+            ctx.lineTo(polygon.points[polygon.points.length - i].x, polygon.points[polygon.points.length - i].y);
+        }
+        ctx.closePath();
+        ctx.fill();
+    }
 
     return {
         // evento de clic en el canvas para agregar puntos y 
@@ -77,7 +101,7 @@ var app = (function () {
             if(window.PointerEvent){
                 canvas.addEventListener("pointerdown", function (event){
                     var point = getMousePosition(event);
-                    addPointToCanvas(point);
+                    //addPointToCanvas(point);
                     stompClient.send("/topic"+topic, {}, JSON.stringify(point));
                 });
             }
