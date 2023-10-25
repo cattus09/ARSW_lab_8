@@ -102,8 +102,11 @@ Ajuste la aplicación anterior para que pueda manejar más de un dibujo a la vez
 	```bash
 	git commit -m "PARTE 3".
 	```
+![](img/ARSW_LAB8_FOTO9.png)
+![](img/ARSW_LAB8_FOTO10.png)
 
-
+![](img/ARSW_LAB8_FOTO11.png)
+![](img/ARSW_LAB8_FOTO12.png)
 ## Parte IV.
 
 Para la parte IV, usted va  a implementar una versión extendida del modelo de actividades y eventos anterior, en la que el servidor (que hasta ahora sólo fungía como Broker o MOM -Message Oriented Middleware-) se volverá también suscriptor de ciertos eventos, para a partir de los mismos agregar la funcionalidad de 'dibujo colaborativo de polígonos':
