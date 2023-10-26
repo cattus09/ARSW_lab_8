@@ -1,7 +1,7 @@
 ### Escuela Colombiana de Ingeniería
 ### Arquitecturas de Software - ARSW
 ### Laboratorio - Broker de Mensajes STOMP con WebSockets + HTML5 Canvas.
-
+## ESTUDIANTES: NICOLÁS CASTRO JARAMILLO Y SERGIO GONZALES
 
 
 - Conectarse con un botón
