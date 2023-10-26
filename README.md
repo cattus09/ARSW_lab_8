@@ -136,6 +136,7 @@ Para ver cómo manejar esto desde el manejador de eventos STOMP del servidor, re
 	}
 
 	```
+![image](https://github.com/cattus09/ARSW_lab_8/assets/98556822/56a5e358-1d7a-4477-91a6-776a9f7315d4)
 
 2. Ajuste su cliente para que, en lugar de publicar los puntos en el tópico /topic/newpoint.{numdibujo}, lo haga en /app/newpoint.{numdibujo}. Ejecute de nuevo la aplicación y rectifique que funcione igual, pero ahora mostrando en el servidor los detalles de los puntos recibidos.
 
@@ -147,7 +148,11 @@ Para ver cómo manejar esto desde el manejador de eventos STOMP del servidor, re
 	3. El cliente, ahora también se suscribirá al tópico '/topic/newpolygon'. El 'callback' asociado a la recepción de eventos en el mismo debe, con los datos recibidos, dibujar un polígono, [tal como se muestran en ese ejemplo](http://www.arungudelli.com/html5/html5-canvas-polygon/).
 	4. Verifique la funcionalidad: igual a la anterior, pero ahora dibujando polígonos cada vez que se agreguen cuatro puntos.
 	
-	
+![image](https://github.com/cattus09/ARSW_lab_8/assets/98556822/834029b4-7207-40bf-9e23-196e8ecada5d)
+
+![image](https://github.com/cattus09/ARSW_lab_8/assets/98556822/52235db2-d662-4a09-a534-caa6832e31de)
+
+ 
 5. A partir de los diagramas dados en el archivo ASTAH incluido, haga un nuevo diagrama de actividades correspondiente a lo realizado hasta este punto, teniendo en cuenta el detalle de que ahora se tendrán tópicos dinámicos para manejar diferentes dibujos simultáneamente.
 
 5. Haga commit de lo realizado.
