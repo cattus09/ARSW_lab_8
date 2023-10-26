@@ -45,17 +45,16 @@ var app = (function () {
         //subscribe to /topic/TOPICXX when connections succeed
         stompClient.connect({}, function (frame) {
             console.log('Connected: ' + frame);
-            stompClient.subscribe('/topic/'+topic, function (eventbody) {
+            stompClient.subscribe('/topic'+topic, function (eventbody) {
                 // para manejar eventos recibidos desde el servidor
                 var newPoint = JSON.parse(eventbody.body);
-                var x = newPoint.x;
-                var y = newPoint.y;
-                //alert('Nuevo punto recibido - X: ' + x + ', Y: ' + y);
-                var newPoint = new Point(x, y);
+                // var x = newPoint.x;
+                // var y = newPoint.y;
+                // //alert('Nuevo punto recibido - X: ' + x + ', Y: ' + y);
                 if(topic.includes("newpoint")){
-                    addPointToCanvas(pt);
+                    addPointToCanvas(newPoint);
                 } else {
-                    var polygon = new Polygon(pt);
+                    var polygon = new Polygon(newPoint);
                     drawNewPolygon(polygon);
                 }
 
@@ -66,15 +65,17 @@ var app = (function () {
     };
     
     var drawNewPolygon = function(polygon){
-        var ctx = canvas.getContext('2d');
         var canvas = document.getElementById('canvas');
-        ctx.beginPath();;
-        ctx.fillStyle = '#8A2BE2';
-        console.log("Longitud" +  polygon.points.length);
-        for(var i = 1; i <=  4; i++){
-            if (i == 1 )ctx.moveTo(polygon.points[polygon.points.length - i].x, polygon.points[polygon.points.length - i].y);
-            ctx.lineTo(polygon.points[polygon.points.length - i].x, polygon.points[polygon.points.length - i].y);
+        var ctx = canvas.getContext('2d');
+        ctx.beginPath();
+        ctx.moveTo(polygon.points[0].x, polygon.points[0].y)
+        ctx.fillStyle = '#00FF9B';
+        console.log("Longitud: " +  polygon.points.length);
+        for (var i = 1; i < polygon.points.length; i++) {
+            var point = polygon.points[i];
+            ctx.lineTo(point.x, point.y);
         }
+        ctx.lineTo(polygon.points[0].x, polygon.points[0].y);
         ctx.closePath();
         ctx.fill();
     }
@@ -111,7 +112,7 @@ var app = (function () {
             var pt=new Point(px,py);
             // console.info("publishing point at "+pt);
             addPointToCanvas(pt);
-            stompClient.send("/topic/"+topic, {}, JSON.stringify(pt));
+            stompClient.send("/app"+topic, {}, JSON.stringify(pt));
             //publicar el evento
         },
 

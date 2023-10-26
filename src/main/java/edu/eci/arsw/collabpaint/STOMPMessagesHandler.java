@@ -6,6 +6,7 @@ import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -14,7 +15,7 @@ import java.util.concurrent.ConcurrentHashMap;
 @Controller
 public class STOMPMessagesHandler {
 
-    private Map<String, ArrayList<Point>> conex = new ConcurrentHashMap<>();
+    private Map<String, CopyOnWriteArrayList<Point>> conex = new ConcurrentHashMap<>();
 
     @Autowired
     SimpMessagingTemplate msgt;
@@ -27,9 +28,11 @@ public class STOMPMessagesHandler {
             conex.get(numdibujo).add(pt);
             if (conex.get(numdibujo).size() % 4 == 0){
                 msgt.convertAndSend("/topic/newpolygon." + numdibujo, conex.get(numdibujo));
+                conex.put(numdibujo, new CopyOnWriteArrayList<>());
+
             }
         } else {
-            ArrayList<Point> n = new ArrayList<>();
+            CopyOnWriteArrayList<Point> n = new CopyOnWriteArrayList<>();
             n.add(pt);
             conex.put(numdibujo, n);
         }
